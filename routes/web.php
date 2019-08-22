@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('foo')->group(function(){ 
+    Route::get('/', 'FooController@callAllMethod')->name('coy');
+}); 
