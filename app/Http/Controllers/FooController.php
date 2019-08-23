@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Foo;
+use Auth;  
 class FooController extends Controller
 {
     // menampilkan semua output dari method di atas dalam bentuk list
 
+    public function __constructor() { 
+        $this->middleware('CheckAge');
+    }
     public function callAllMethod() { 
         echo 'Baz1 :'.Foo::baz1(); 
         echo '<br>'; 
@@ -23,5 +27,14 @@ class FooController extends Controller
 
     public function callAMethod($m){ 
         echo Foo::$m();
+    }
+
+    public function age() {
+        $birth = Auth::User()->birth_date; 
+        $now = date('Y-m-d'); 
+        $diff = date_diff(date_create($birth), date_create($now));
+
+        $age= $diff->format('%y');
+       
     }
 }

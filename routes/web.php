@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('foo')->group(function(){ 
+Route::prefix('foo')->middleware(['checkage'])->group(function(){ 
     Route::get('/', 'FooController@callAllMethod')->name('coy');
     Route::get('/{m}', 'FooController@callAMethod')->name('cuy');
-}); 
+    
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/age', 'FooController@age')->name('age');
