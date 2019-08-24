@@ -40,7 +40,7 @@ Class Foo {
     public function baz3(){ 
         $array = [] ; 
         
-        for ($int = 1; $int <= 15; $int++) {
+        for ($int = 1; $int <= 20; $int++) {
             if ($int % 2 == 1) {
             
              array_push($array,$int); 
